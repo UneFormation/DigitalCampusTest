@@ -1,0 +1,20 @@
+version: "3.4"
+
+services:
+  php:
+    container_name: php.mdw1.digital-campus
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: php
+    volumes:
+      - .:/app
+
+  composer:
+    container_name: composer.mdw1.digital-campus
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: composer
+    volumes:
+      - .:/app

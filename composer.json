@@ -1,0 +1,21 @@
+{
+    "name": "digital-campus/mdw1-test",
+    "description": "Project to test simple php classes",
+    "type": "project",
+    "require": {
+        "php": "^8.1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "David Patiashvili",
+            "email": "david.patiashvili@uneformation.fr"
+        }
+    ],
+    "minimum-stability": "stable"
+}
