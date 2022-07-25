@@ -24,6 +24,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    entrypoint: phpunit
+    entrypoint: /app/vendor/bin/phpunit
     volumes:
       - .:/app
