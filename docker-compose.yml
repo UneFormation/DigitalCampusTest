@@ -27,3 +27,5 @@ services:
     entrypoint: /app/vendor/bin/phpunit
     volumes:
       - .:/app
+    environment:
+      - XDEBUG_MODE=coverage

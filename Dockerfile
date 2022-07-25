@@ -9,6 +9,9 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && mv composer.phar /usr/local/bin/composer \
     && wget "https://phar.phpunit.de/phpunit-${PHPUNIT_VERSION}.phar" \
     && chmod +x "phpunit-${PHPUNIT_VERSION}.phar" \
-    && mv "phpunit-${PHPUNIT_VERSION}.phar" /usr/local/bin/phpunit
+    && mv "phpunit-${PHPUNIT_VERSION}.phar" /usr/local/bin/phpunit \
+    && apk --update --no-cache add autoconf g++ make \
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug
 
 WORKDIR /app
