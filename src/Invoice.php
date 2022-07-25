@@ -64,4 +64,20 @@ class Invoice
     {
         return $amount * static::VAT_PERCENT;
     }
+
+    public static function sum(...$args): float
+    {
+        $args = array_map(function(float $value) {
+            return $value;
+        }, $args);
+
+        $value =  array_sum($args);
+        if ($value > 0) {
+            return $value;
+        }
+        if ($value < 0) {
+            return $value;
+        }
+        return $value;
+    }
 }
