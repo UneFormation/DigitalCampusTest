@@ -2,4 +2,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-echo 'Hello the World', PHP_EOL;
+$invoice = App\Invoice::getInstance();
+$invoice2 = App\Invoice::getInstance();
+
+var_dump($invoice === $invoice2);
