@@ -18,3 +18,12 @@ services:
     entrypoint: composer
     volumes:
       - .:/app
+
+  phpunit:
+    container_name: phpunit.mdw1.digital-campus
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: phpunit
+    volumes:
+      - .:/app
