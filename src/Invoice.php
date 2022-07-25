@@ -65,19 +65,23 @@ class Invoice
         return $amount * static::VAT_PERCENT;
     }
 
-    public static function sum(...$args): float
+    protected static function controlArgsAsFloat(array $args): void
     {
-        $args = array_map(function(float $value) {
+        array_map(function(float $value) {
             return $value;
         }, $args);
-
-        $value =  array_sum($args);
-        if ($value > 0) {
-            return $value;
-        }
-        if ($value < 0) {
-            return $value;
-        }
-        return $value;
     }
+
+    public static function sum(...$args): float
+    {
+        static::controlArgsAsFloat($args);
+        return array_sum($args);
+    }
+
+    public static function multiply(...$args): float
+    {
+        static::controlArgsAsFloat($args);
+        return array_product($args);
+    }
+
 }
