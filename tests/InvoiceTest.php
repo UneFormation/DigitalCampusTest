@@ -83,7 +83,7 @@ class InvoiceTest extends TestCase
         ];
         foreach ($asserts as $index => $assert) {
             list($numbers, $expected) = $assert;
-            $result = Invoice::multiply(...$numbers);
+            $result = Invoice::multiplyTest(...$numbers);
             $this->assertEquals($expected, $result, "Failed {$index}");
         }
     }
@@ -95,7 +95,7 @@ class InvoiceTest extends TestCase
     public function testMultiplyInvalidParamsString()
     {
         $this->expectError();
-        Invoice::multiply('string', 0.3);
+        Invoice::multiplyTest('string', 0.3);
     }
 
     /**
@@ -105,7 +105,7 @@ class InvoiceTest extends TestCase
     public function testMultiplyInvalidParamsNull()
     {
         $this->expectError();
-        Invoice::multiply(19.34, null);
+        Invoice::multiplyTest(19.34, null);
     }
 
     /**

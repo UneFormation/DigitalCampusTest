@@ -78,7 +78,7 @@ class Invoice
         return array_sum($args);
     }
 
-    public static function multiply(...$args): float
+    private static function multiply(...$args): float
     {
         static::controlArgsAsFloat($args);
         return array_product($args);
