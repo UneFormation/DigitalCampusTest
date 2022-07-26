@@ -2,21 +2,11 @@
 
 namespace AppTest;
 
+use AppTest\Trait\PrivateAccess;
+
 class Invoice extends \App\Invoice
 {
-    /**
-     * @param string $methodName
-     * @return ReflectionMethod
-     */
-    public static function exposedMethod(string $methodName, ...$parameters): mixed
-    {
-        $object = new static();
-        $reflexion = new \ReflectionClass($object);
-
-        $method = $reflexion->getMethod($methodName);
-        $method->setAccessible(true);
-        return $method->invokeArgs($object, $parameters);
-    }
+    use PrivateAccess;
 
     public static function multiplyTest(...$args)
     {
