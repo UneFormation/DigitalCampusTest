@@ -2,7 +2,7 @@
 
 use \PHPUnit\Framework\TestCase;
 
-use App\Invoice;
+use AppTest\Invoice;
 
 /**
  * @coversDefaultClass App\Invoice
@@ -106,5 +106,43 @@ class InvoiceTest extends TestCase
     {
         $this->expectError();
         Invoice::multiply(19.34, null);
+    }
+
+    /**
+     * @covers ::divisionBy
+     */
+    public function testDivisionBy()
+    {
+        $asserts = [
+            [24, 2, 12],
+            [-10.32, -2, 5.16],
+            [-100.34, 10, -10.03],
+            [100.25, 0.1, 1002.5],
+        ];
+        foreach ($asserts as $index => $assert) {
+            list($a, $b, $expected) = $assert;
+            $result = Invoice::divisionBy($a, $b);
+            $this->assertEquals($expected, $result, "Failed {$index}");
+        }
+    }
+
+    /**
+     * @covers ::divisionBy
+     * @covers ::controlArgsAsFloat
+     */
+    public function testDivisionByInvalidParamsString()
+    {
+        $this->expectError();
+        Invoice::divisionBy('string', 0.3);
+    }
+
+    /**
+     * @covers ::divisionBy
+     * @covers ::controlArgsAsFloat
+     */
+    public function testDivisionByInvalidParamsNull()
+    {
+        $this->expectError();
+        Invoice::divisionBy(19.34, null);
     }
 }

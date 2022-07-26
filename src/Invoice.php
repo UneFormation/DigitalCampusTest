@@ -72,7 +72,7 @@ class Invoice
         }, $args);
     }
 
-    public static function sum(...$args): float
+    protected static function sum(...$args): float
     {
         static::controlArgsAsFloat($args);
         return array_sum($args);
@@ -82,6 +82,11 @@ class Invoice
     {
         static::controlArgsAsFloat($args);
         return array_product($args);
+    }
+
+    public static function divisionBy(float $a, float $b): float
+    {
+        return round($a / $b, 2);
     }
 
 }
