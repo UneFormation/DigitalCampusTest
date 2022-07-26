@@ -3,7 +3,7 @@
 namespace App;
 
 /**
- *
+ * david.patiashvili@uneformation.fr
  */
 class Response
 {
