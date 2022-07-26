@@ -19,12 +19,27 @@ class Response
 
     protected function __construct(int $statusCode)
     {
-        $this->statusCode = $statusCode;
+        $this->setStatusCode($statusCode);
     }
 
     protected function addHeader(string $name, string $value): static
     {
         $this->headers[$name] = $value;
+
+        return $this;
+    }
+
+    protected function setStatusCode(int $statusCode)
+    {
+        $availableCodes = [
+            static::STATUS_OK,
+            static::STATUS_ERROR,
+            static::STATUS_UNAUTHORIZED
+        ];
+        if (!in_array($statusCode, $availableCodes, true)) {
+            throw new \InvalidArgumentException('Not authorized status code : ' . $statusCode);
+        }
+        $this->statusCode = $statusCode;
 
         return $this;
     }
